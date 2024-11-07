@@ -51,4 +51,3 @@ def evaluate(input_data):
                     modif_item = item.replace(key, ' '.join(dict[key]))
                     item = modif_item
             return standard_evaluate(item)
-        
