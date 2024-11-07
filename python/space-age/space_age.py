@@ -25,5 +25,4 @@ class SpaceAge:
 
     def on_neptune(self):
         return round(self.years/164.79132, 2)
-
-
+    
