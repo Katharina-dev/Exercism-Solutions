@@ -1,4 +1,5 @@
 import math
+
 def to_decimal(input_base, digits):
     result = []
     for pow, digit in enumerate(digits[::-1]):
