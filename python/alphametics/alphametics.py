@@ -14,4 +14,4 @@ def solve(puzzle):
         num = [word.translate(trans) for word in words]
         *adds, target = map(int, num)
         if sum(adds) == target:
-            return dict(zip(letters, perm))
+            return dict(zip(letters, perm)) 
