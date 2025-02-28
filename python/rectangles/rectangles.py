@@ -1,4 +1,5 @@
 def rectangles(strings):
+    
     count = 0
     for a in range(len(strings)):
         for b in range(len(strings[0])):
