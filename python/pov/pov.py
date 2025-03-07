@@ -5,7 +5,7 @@ class Tree:
     def __init__(self, label, children=None):
         
         self.label = label
-        self.children = children if children is not None else []
+        self.children = children if children else []
         
     def find(self, name, visited):
         
