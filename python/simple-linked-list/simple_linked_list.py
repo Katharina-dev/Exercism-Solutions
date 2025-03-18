@@ -1,4 +1,5 @@
 class Node:
+    
     def __init__(self, data):
         self.data = data
         self.foll = None
@@ -11,6 +12,7 @@ class Node:
 
 
 class LinkedList:
+    
     def __init__(self, values=[]):
         values = list(values)
         self.values = []
@@ -58,5 +60,6 @@ class LinkedList:
         return [item.data for item in self.values]
 
 class EmptyListException(Exception):
+    
     def __init__(self, message):
         self.message = message
