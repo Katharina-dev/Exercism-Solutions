@@ -1,17 +1,21 @@
 WHITE = 'W'
 BLACK = 'B'
 NONE = ' '
+
 class Board:
+    
     """Count territories of each player in a Go game
  
     Args:
         board (list[str]): A two-dimensional Go board
     """
+    
     def __init__(self, board):
         self.board = board
         self.owners = {"W": set(),
                        "B": set(),
                        " ": set()}
+        
     def visited(self, row, col):
         if row < 0 or row >= len(self.board) or col < 0 or col >= len(self.board[0]) or self.board[row][col] == " " and (col, row) in self.visited_cells:
             return
@@ -23,6 +27,7 @@ class Board:
             self.visited(row+1, col)
             self.visited(row, col-1)
             self.visited(row, col+1)
+            
     def territory(self, x, y):
         """Find the owner and the territories given a coordinate on
            the board
@@ -44,6 +49,7 @@ class Board:
         self.visited(y, x)
         letter = " " if not self.visited_cells or len(set(self.visited_letters)) != 1 else self.visited_letters[0]
         return (letter, set(self.visited_cells))
+    
     def territories(self):
         """Find the owners and the territories of the whole board
  
