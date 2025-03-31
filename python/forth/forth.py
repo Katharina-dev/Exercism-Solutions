@@ -1,7 +1,11 @@
 class StackUnderflowError(Exception):
+    
     def __init__(self, message):
         self.message = message
+
+        
 def standard_evaluate(string):
+    
     data = [symbol.lower() for symbol in string.split()]
     stack = []
     for symbol in data:
@@ -34,7 +38,10 @@ def standard_evaluate(string):
             elif symbol == 'over':
                 stack.extend([num2, num1, num2])
     return stack
+
+
 def evaluate(input_data):
+    
     if len(input_data) == 1:
         if input_data[0][0] == ':':
             raise ValueError("illegal operation")
