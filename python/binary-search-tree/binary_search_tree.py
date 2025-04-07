@@ -42,3 +42,4 @@ class BinarySearchTree:
     
     def sorted_data(self):
         return self.sorting(self.head)
+
