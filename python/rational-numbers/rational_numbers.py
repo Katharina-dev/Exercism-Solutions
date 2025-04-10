@@ -62,4 +62,3 @@ class Rational:
             self.numer *= -1
             self.denom *= -1
         return self
-    
