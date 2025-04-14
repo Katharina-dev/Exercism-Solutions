@@ -1,6 +1,8 @@
 def annotate(minefield):
+    
     adjacent_cells = [(-1,-1), (-1,0), (-1,1), (0,1), (1,1), (1,0), (1,-1), (0,-1)]
     result = []
+    
     for row in range(len(minefield)):
         if len(minefield[row]) != len(minefield[0]):
             raise ValueError("The board is invalid with current input.")
@@ -19,4 +21,5 @@ def annotate(minefield):
                     count += 1
             result_row.append(str(count) if count else " ")
         result.append("".join(result_row))
+        
     return result
