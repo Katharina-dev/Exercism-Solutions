@@ -1,16 +1,21 @@
-import math
+from itertools import cycle
+
 def spiral_matrix(size):
-    matrix = [['' for j in range(size)] for i in range(size)]
-    number = 0
-    line = 1
-    while line <= math.ceil(size/2):
-        turn = 0
-        while turn < 4:
-            for i in range(size):
-                if not matrix[line-1][i]:
-                    number += 1
-                    matrix[line-1][i] = number
-            matrix = [[*i] for i in zip(*[line[::-1] for line in matrix])]
-            turn += 1
-        line += 1
+    
+    matrix = [[None] * size for _ in range(size)]
+    r, c = 0, 0
+    deltas = cycle(((0,1), (1,0), (0,-1), (-1,0)))
+    dr, dc = next(deltas)
+    
+    for i in range(size**2):
+        matrix[r][c] = i+1
+        if (
+            not 0 <= r+dr < size or
+            not 0 <= c+dc < size or
+            matrix[r+dr][c+dc] is not None
+        ):
+            dr, dc = next(deltas)
+        r += dr
+        c += dc
+        
     return matrix
