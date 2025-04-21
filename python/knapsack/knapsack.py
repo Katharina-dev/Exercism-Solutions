@@ -1,26 +1,14 @@
 def maximum_value(maximum_weight, items):
     
-    if not items:
-        return 0
+    table = [[0 for weight in range(maximum_weight+1)] for item in range(len(items)+1)]
     
-    weights = list(range(maximum_weight+1))
-    table = {weight: [{count: 0} for count in range(len(items))] for weight in weights}
-    
-    for weight in weights:
-        table[weight][0][0] = items[0]['value'] if items[0]['weight'] <= weight else 0
-        
-    for count, item in enumerate(items[1:],1):
-        current_value = item['value']
-        
-        for weight in weights:
-            prev_max = table[weight][count-1][count-1]
-            delta = weight - items[count]['weight']
-            
-            if  delta >= 0:
-                max_value_free_w = table[delta][count-1][count-1] if delta in table else 0
-                table[weight][count][count] = max(prev_max, current_value + max_value_free_w)
-                
+    for i in range(len(items)+1):
+        for j in range(maximum_weight+1):
+            if i == 0 or j == 0:
+                table[i][j] = 0
+            elif items[i-1]['weight'] <= j:
+                table[i][j] = max(items[i-1]['value'] + table[i-1][j-items[i-1]['weight']], table[i-1][j])
             else:
-                table[weight][count][count] = prev_max
+                table[i][j] = table[i-1][j]
                 
-    return table[maximum_weight][-1][len(items)-1]
+    return table[-1][-1]
