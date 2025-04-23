@@ -9,11 +9,11 @@ def encode(plain_text):
     trans = str.maketrans(letters, e_letters, " ,.")
     result = list(plain_text.translate(trans))
     
-    for i in range(len(result)):
+    for i in range(1,len(result)):
         if i%5 == 0:
             result[i] = " " + result[i]
             
-    return "".join(result).strip()
+    return "".join(result)
 
 
 
