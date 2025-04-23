@@ -1,11 +1,9 @@
-def rotate(text, key):
-    result = []
-    for l in text:
-        if l in "ABCDEFGHIJKLMNOPQRSTUVWXYZ":
-            l = chr((ord(l.lower()) - 97 + key)%26 + 97).upper()
-        elif l in "abcdefghijklmnopqrstuvwxywz":
-            l = chr((ord(l) - 97 + key)%26 + 97)
-        result.append(l)
-    return "".join(result)
+letters = "abcdefghijklmnopqrstuvwxyz"
 
+def rotate(text, key):
+    
+    rotated_letters = letters[key:] + letters[:key]
+    trans = str.maketrans(letters + letters.upper(), rotated_letters + rotated_letters.upper())
+    
+    return text.translate(trans)
 
