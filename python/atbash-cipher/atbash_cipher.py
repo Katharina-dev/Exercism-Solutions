@@ -1,16 +1,26 @@
+letters = "abcdefghijklmnopqrstuvwxyz"
+e_letters = letters[::-1]
+
+
 def encode(plain_text):
     
-    text_array = [i for i in plain_text if i.isalnum()]
-    text_cipher = [chr(26 - (ord(i.lower()) - 96) + 97) if i.isalpha() else i for i in text_array]
-    parts = len(text_cipher)//5
+    plain_text = plain_text.lower()
     
-    return ' '.join([''.join(text_cipher[i*5:i*5+5]) for i in range(parts) if parts>0]  + [''.join(text_cipher[parts*5:])]).strip()
+    trans = str.maketrans(letters, e_letters, " ,.")
+    result = list(plain_text.translate(trans))
+    
+    for i in range(len(result)):
+        if i%5 == 0:
+            result[i] = " " + result[i]
+            
+    return "".join(result).strip()
+
 
 
 def decode(ciphered_text):
     
-    text_array = [i for i in (ciphered_text.replace(' ', '')) if i.isalnum()]
-    text_cipher = [chr(26 - (ord(i) - 96) + 97) if i.isalpha() else i for i in text_array]
+    trans = str.maketrans(e_letters, letters, " ")
+    result = ciphered_text.translate(trans)
     
-    return ''.join(text_cipher)
+    return result
 
