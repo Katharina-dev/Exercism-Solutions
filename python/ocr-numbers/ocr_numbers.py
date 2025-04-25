@@ -12,11 +12,13 @@ figures = {'0': [" _ ", "| |", "|_|", "   "],
 
 
 def convert(input_grid):
+    
     if len(input_grid)%4:
         raise ValueError("Number of input lines is not a multiple of four")
     for line in input_grid:
         if len(line)%3:
             raise ValueError("Number of input columns is not a multiple of three")
+
     result = []
     for i in range(len(input_grid)//4):
         res = []
@@ -28,4 +30,5 @@ def convert(input_grid):
             else:
                 res.append('?')
         result.append(''.join(res))
+        
     return ','.join(result) if len(result) > 1 else result[0]
