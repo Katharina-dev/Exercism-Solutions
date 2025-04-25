@@ -64,4 +64,4 @@ class Graph:
                     self.edges.append(Edge(data[i][1], data[i][2], data[i][3]))
                     
                 elif data[i][0] == 2:
-                    self.attrs[data[i][1]] = data[i][2]
+                    self.attrs[data[i][1]] = data[i][2] 
