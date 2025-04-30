@@ -1,5 +1,6 @@
 from collections import Counter
 
+
 class CustomSet:
     
     def __init__(self, elements=[]):
@@ -22,8 +23,8 @@ class CustomSet:
         return self.elements == subset
     
     def __eq__(self, other):
-        self.set_()
-        other.set_()
+        self.elements = [elem for elem in Counter(self.elements) if Counter(self.elements)[elem] > 0]
+        other.elements = [elem for elem in Counter(other.elements) if Counter(other.elements)[elem] > 0]
         return sorted(self.elements) == sorted(other.elements)
     
     def add(self, element):
@@ -38,9 +39,6 @@ class CustomSet:
     
     def __add__(self, other):
         subset = CustomSet(self.elements + other.elements)
-        subset.set_()
+        subset.elements = [elem for elem in Counter(subset.elements) if Counter(subset.elements)[elem] > 0]
         return subset
     
-    def set_(self):
-         self.elements = [elem for elem in Counter(self.elements) if Counter(self.elements)[elem] > 0]
-
