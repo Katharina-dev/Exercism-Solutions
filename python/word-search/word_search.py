@@ -68,5 +68,3 @@ class WordSearch:
             if word in line4:
                 ind = line4.find(word)
                 return (Point(len(self.puzzle)-1-ind, number+ind), Point(len(self.puzzle)-ind-len(word), number+ind+len(word)-1))
-                        
-
