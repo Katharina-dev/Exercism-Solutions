@@ -1,10 +1,14 @@
 color_bands = {'black': '0', 'brown': '1', 'red': '2',
                'orange': '3', 'yellow': '4', 'green': '5',
                'blue': '6', 'violet': '7', 'grey': '8', 'white': '9'}
+
 tolerance = {'grey': '0.05%', 'violet': '0.1%', 'blue': '0.25%',
              'green': '0.5%', 'brown': '1%', 'red': '2%',
              'gold': '5%', 'silver': '10%'}
+
+
 def resistor_label(colors):
+    
     if len(colors) == 1:
         return "0 ohms"
     two_figures = color_bands[colors[0]] + color_bands[colors[1]]
@@ -13,18 +17,21 @@ def resistor_label(colors):
     
     if number//1000000000 > 0:
         prefix = 'giga'
-        rest = number%1000000000
+        rest = str(number)[-9:]
         number //= 1000000000
     elif number//1000000 > 0:
         prefix = 'mega'
-        rest = number%1000000
+        rest = str(number)[-6:]
         number //= 1000000
     elif number//1000 > 0:
         prefix = 'kilo'
         rest = number%1000
+        rest = str(number)[-3:]
         number //= 1000
     else:
         prefix = ''
         rest = ''
-    rest = '.' + str(rest).rstrip('0') if rest else ''
+    rest = rest.rstrip('0')
+    rest = '.' + rest if rest else ''
+    
     return f'{number}{rest} {prefix}ohms ±{tolerance[colors[-1]]}'
