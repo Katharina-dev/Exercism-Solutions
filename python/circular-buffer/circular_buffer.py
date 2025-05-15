@@ -1,4 +1,5 @@
 class BufferFullException(BufferError):
+    
     """Exception raised when CircularBuffer is full.
  
     message: explanation of the error.
@@ -6,8 +7,10 @@ class BufferFullException(BufferError):
     """
     def __init__(self, message):
         self.message = message
+
         
 class BufferEmptyException(BufferError):
+    
     """Exception raised when CircularBuffer is empty.
  
     message: explanation of the error.
@@ -15,12 +18,14 @@ class BufferEmptyException(BufferError):
     """
     def __init__(self, message):
         self.message = message
+
         
 class CircularBuffer:
+    
     def __init__(self, capacity):
         self.capacity = capacity
         self.buffer = []
-        self.gen = self.f()
+        self.gen = self.g()
         
     def read(self):
         try:
@@ -34,15 +39,15 @@ class CircularBuffer:
             self.buffer.append(data)
         else:
             raise BufferFullException("Circular buffer is full")
-            
+        
     def overwrite(self, data):
         if len(self.buffer) >= self.capacity:
-            next(self.gen)    
+            next(self.gen)
         self.buffer.append(data)
         
     def clear(self):
         self.buffer = []
         
-    def f(self):
+    def g(self):
        for i in self.buffer:
            yield i
