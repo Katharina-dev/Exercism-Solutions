@@ -2,6 +2,7 @@ animals = ["fly", "spider", "bird", "cat", "dog", "goat", "cow"]
 second_line = ["It wriggled and jiggled and tickled inside her.", "How absurd to swallow a bird!", "Imagine that, to swallow a cat!", "What a hog, to swallow a dog!", "Just opened her throat and swallowed a goat!", "I don't know how she swallowed a cow!"]
 
 def recite(start_verse, end_verse):
+    
     result = []
     for i in range(start_verse-1, end_verse):
         if i == 0:
@@ -19,4 +20,5 @@ def recite(start_verse, end_verse):
                 sub_result.insert(2, line)
             sub_result.append("I don't know why she swallowed the fly. Perhaps she'll die.")
         result.extend(sub_result+[""])
+        
     return result[:-1]
