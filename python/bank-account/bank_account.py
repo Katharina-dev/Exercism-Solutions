@@ -34,4 +34,3 @@ class BankAccount:
             raise ValueError('account not open')
         self.balance = None
 
-
