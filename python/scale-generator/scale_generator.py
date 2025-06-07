@@ -2,13 +2,16 @@ sharp = ['C', 'a', 'G', 'D', 'A', 'E', 'B', 'F♯', 'e', 'b', 'f#', 'c#', 'g#', 
 flat = ['F', 'Bb', 'Eb', 'Ab', 'Db', 'Gb', 'd', 'g', 'c', 'f', 'bb', 'eb']
 scale_sharp = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#']
 scale_flat = ['A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab']
+
 class Scale:
+    
     def __init__(self, tonic):
         self.tonic = tonic
         self.scale = scale_sharp if tonic in sharp else scale_flat
         
     def chromatic(self):
         return self.scale[self.scale.index(self.tonic.capitalize()):] + self.scale[:self.scale.index(self.tonic.capitalize())]
+    
     def interval(self, intervals):
         self.chrom_scale = self.chromatic()
         self.music_scale = []
