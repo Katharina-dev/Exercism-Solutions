@@ -43,4 +43,4 @@ class ComputeCell(Cell):
         
     def remove_callback(self, callback):
         if callback in self._callbacks:
-            self._callbacks.remove(callback)
+            self._callbacks.remove(callback) 
