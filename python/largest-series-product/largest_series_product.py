@@ -3,7 +3,7 @@ import math
 def largest_product(series, size):
     
     if size > len(series):
-        raise ValueError("span must be smaller than string length")
+        raise ValueError("span must not exceed string length")
     elif size < 0:
         raise ValueError("span must not be negative")
     elif not all(item.isdigit() for item in series):
