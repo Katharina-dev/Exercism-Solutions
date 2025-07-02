@@ -76,5 +76,6 @@ class Zipper:
         return self if self.focus else None
         
     def to_tree(self):
-        return self.root.node_to_tree() 
+        return self.root.node_to_tree()
+
     
