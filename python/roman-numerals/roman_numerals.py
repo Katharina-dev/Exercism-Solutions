@@ -12,11 +12,16 @@ numbers = {1000: "M",
            4: "IV",
            1: "I"}
 
+
 def roman(number):
+    
     result = []
+    
     for i in numbers:
-        result.append(number//i*numbers[i])
-        number -= number//i*i
+        while number >= i:
+            result.append(numbers[i])
+            number -= i
+            
     return "".join(result)
 
 
