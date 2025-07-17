@@ -17,5 +17,5 @@ class Cipher:
         decoded = []
         for l1, l2 in zip(text, cycle(self.key)):
             decoded.append(letters[(ord(l1) % 97 - ord(l2) % 97) % 26])
-        return "".join(decoded)
+        return "".join(decoded) 
 
