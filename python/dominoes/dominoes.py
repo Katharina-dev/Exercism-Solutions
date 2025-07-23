@@ -22,5 +22,5 @@ def can_chain(dominoes):
             
         if len(chain) == len(lst) and chain[0][0] == chain[-1][-1]:
             
-            return chain
+            return chain 
         
