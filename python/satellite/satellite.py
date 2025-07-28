@@ -22,4 +22,4 @@ def tree(preorder, inorder):
     
     return {"v": preorder[0],
             "l": tree(preorder[1:root_index+1], inorder[:root_index]),
-            "r": tree(preorder[root_index+1:], inorder[root_index+1:])}
+            "r": tree(preorder[root_index+1:], inorder[root_index+1:])} 
